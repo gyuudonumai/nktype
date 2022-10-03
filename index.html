@@ -2,29 +2,38 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css" />
     <title>NHKtype</title>
   </head>
   <body>
     <div id="app">
-      <input type="text" v-model="textInput" />
-      <p>{{cor}}</p>
+      <div class="quiz">
+        <textarea
+          class="textArea"
+          id="inText"
+          placeholder="全てひらがな（NHK,YouTuberを除く）"
+          oninput="textAreaHeightSet(this)"
+          onchange="textAreaHeightSet(this)"
+          cols="60"
+        ></textarea>
+        <a id="sub">送信!</a>
+      </div>
     </div>
-    <button
-      type="button"
-      class="btn btn-primary resume-btn"
-      id="stop"
-      style="display: none"
-    >
+    <a class="btn btn-primary resume-btn" id="stop" style="display: none">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
+        width="20"
+        height="20"
         fill="currentColor"
         class="bi bi-pause-circle"
         viewBox="0 0 16 16"
@@ -36,12 +45,13 @@
           d="M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5z"
         />
       </svg>
-    </button>
-    <button type="button" class="btn btn-primary resume-btn" id="start">
+      停止
+    </a>
+    <a class="btn btn-primary resume-btn" id="start">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
+        width="20"
+        height="20"
         fill="currentColor"
         class="bi bi-play-circle"
         viewBox="0 0 16 16"
@@ -53,7 +63,9 @@
           d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"
         />
       </svg>
-    </button>
+      再生
+    </a>
+    <script src="text.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
